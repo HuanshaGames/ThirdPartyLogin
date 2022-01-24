@@ -22,7 +22,7 @@ $json = file_get_contents('https://passport.huanshagame.com/auth/verify.php?clie
 
 $result = json_decode($json, true);
 
-if($result['status'] == 'true'){
+if($result['code'] == '200'){
     $token = $result['token'];
 } else {
     die;
