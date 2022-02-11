@@ -19,13 +19,11 @@
 ?>
 
 <?php 
-if(!$_GET['code']){ 
+if($config['client_id'] && $config['secret_hash']){ 
     echo '
         <script>
             window.location.href="https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'"
         </script>
     ';
-} else {
-    include 'callback.php';
 }
 ?>
