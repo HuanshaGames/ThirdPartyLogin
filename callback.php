@@ -25,7 +25,7 @@ $result = json_decode($json, true);
 if($result['code'] == '200'){
     $token = $result['token'];
 } else {
-    die;
+    $token = null;
 }
 // 核心部分: 结束
 
@@ -33,6 +33,20 @@ if($result['code'] == '200'){
 // 在此处输入你的业务逻辑.
 // 使用 $token 作为用户字符串
 
-//e.g.
-echo $token;
+//       **这是一个例子**
+// 以下会显示通过授权的账号信息
+echo '==账户信息==';
+// 当: 返回成功时
+if($token){
+    // 输出>返回CODE值
+    echo '返回的CODE值: '.$code;
+    // 输出>用户授权TOKEN
+    echo '用户授权TOKEN: '.$token;
+
+
+// 当: 返回失败时
+} else {
+    echo '错误信息: '.$result['message'],' (#'.$result['code'].')';
+}
+
 ?>
