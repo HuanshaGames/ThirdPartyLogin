@@ -28,13 +28,14 @@ if($config['get_uid']){
 if($config['get_username']){
     $permission['username'] = true;
 }
-$permission = str_replace('"', '\"', json_encode($permission));
+$permission = json_encode($permission);
+$permission_json = str_replace('"', '\"', $permission);
 
 if(!$config['client_id'] || !$config['secret_hash']){
     die('请在 inc.config.php 中填写 client_id 与 secret_hash');
 }
 
-if($config['check_update'] == true){
+if($config['check_update']){
     $lastest = json_decode(file_get_contents('https://git.huanshagame.com/ThirdPartyLogin/upd.check.html'), true);
     $lastest = $newest['lastest'];
     if($lastest != $config['version']){
