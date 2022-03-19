@@ -28,7 +28,7 @@ if($config['get_uid']){
 if($config['get_username']){
     $permission['username'] = true;
 }
-$permission = json_encode($permission);
+$permission = str_replace('"', '\"', json_encode($permission));
 
 if(!$config['client_id'] || !$config['secret_hash']){
     die('请在 inc.config.php 中填写 client_id 与 secret_hash');
