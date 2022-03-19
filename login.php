@@ -20,7 +20,7 @@
 
 <?php 
 
-$permission = array();
+$permission;
 
 if($config['get_uid']){
     $permission['uid'] = true;
@@ -29,7 +29,6 @@ if($config['get_username']){
     $permission['username'] = true;
 }
 $permission = json_encode($permission);
-$permission_json = str_replace('"', '\"', $permission);
 
 if(!$config['client_id'] || !$config['secret_hash']){
     die('请在 inc.config.php 中填写 client_id 与 secret_hash');
@@ -39,7 +38,7 @@ if($config['check_update']){
     $lastest = json_decode(file_get_contents('https://git.huanshagame.com/ThirdPartyLogin/upd.check.html'), true);
     $lastest = $newest['lastest'];
     if($lastest != $config['version']){
-        die('<meta http-equiv="refresh" content="3; https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'"> <p><b>检测到新版本!</b> 3秒后跳转至授权页面.</p>');
+        die('<p><b>检测到新版本!</b> <a href=\'https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'\'>点击此处继续</a></p>');
     }
 }
 
