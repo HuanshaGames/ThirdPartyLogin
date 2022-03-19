@@ -36,16 +36,16 @@ if(!$config['client_id'] || !$config['secret_hash']){
 
 if($config['check_update']){
     $lastest = json_decode(file_get_contents('https://git.huanshagame.com/ThirdPartyLogin/upd.check.html'), true);
-    $lastest = $newest['lastest'];
+    $lastest = $lastest['lastest'];
     if($lastest != $config['version']){
-        die('<p><b>检测到新版本!</b> <a href=\'https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'\'>点击此处继续</a></p>');
+        die('<p><b>检测到新版本!</b> 最新版本: '.$lastest.', 您的版本: '.$config['version'].'<br /><a href=\'https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'\'>点击此处继续</a></p>');
     }
 }
 
 if($config['client_id'] && $config['secret_hash']){ 
     echo '
         <script>
-            window.location.href="https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'"
+            window.location.href=\'https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'\'
         </script>
     ';
 }
