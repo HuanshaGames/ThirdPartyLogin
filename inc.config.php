@@ -13,7 +13,7 @@
 $config = array(
     
     'version' => '4', //程序版本号, 请勿修改
-    'check_update' => false, //检查更新 下版本更新此功能
+    'check_update' => false, //检查更新
     
     // 第三方平台接入信息
     
