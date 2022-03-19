@@ -37,7 +37,7 @@ if(!$config['client_id'] || !$config['secret_hash']){
 if($config['check_update']){
     $lastest = json_decode(file_get_contents('https://git.huanshagame.com/ThirdPartyLogin/upd.check.html'), true);
     $lastest = $newest['lastest'];
-    if($lastest == $config['version']){
+    if($lastest != $config['version']){
         die('<meta http-equiv="refresh" content="3; https://passport.huanshagame.com/auth/?client_id='.$config['client_id'].'&redirect_url='.$_SERVER['REQUEST_URI'].'&permission='.$permission.'"> <p><b>检测到新版本!</b> 3秒后跳转至授权页面.</p>');
     }
 }
