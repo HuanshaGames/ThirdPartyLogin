@@ -34,7 +34,7 @@ if(!$config['client_id'] || !$config['secret_hash']){
     die('请在 inc.config.php 中填写 client_id 与 secret_hash');
 }
 
-if($config['check_update']){
+if($config['check_update'] == true){
     $lastest = json_decode(file_get_contents('https://git.huanshagame.com/ThirdPartyLogin/upd.check.html'), true);
     $lastest = $newest['lastest'];
     if($lastest != $config['version']){
